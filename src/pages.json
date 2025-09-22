@@ -1,0 +1,249 @@
+{
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "packages/dashboard/index",
+      "style": {
+        "navigationBarTitleText": "Vant + Uniapp"
+      }
+    },
+    {
+      "path": "packages/van-button/demo",
+      "style": {
+        "navigationBarTitleText": "Button 按钮"
+      }
+    },
+    {
+      "path": "packages/van-cell/demo",
+      "style": {
+        "navigationBarTitleText": "Cell 单元格"
+      }
+    },
+    {
+      "path": "packages/van-field/demo",
+      "style": {
+        "navigationBarTitleText": "Field 输入框"
+      }
+    },
+    {
+      "path": "packages/van-icon/demo",
+      "style": {
+        "navigationBarTitleText": "Icon 图标"
+      }
+    },
+    {
+      "path": "packages/van-image/demo",
+      "style": {
+        "navigationBarTitleText": "Image 图片"
+      }
+    },
+    {
+      "path": "packages/van-col/demo",
+      "style": {
+        "navigationBarTitleText": "Layout 布局"
+      }
+    },
+    {
+      "path": "packages/van-rate/demo",
+      "style": {
+        "navigationBarTitleText": "Rate 评分"
+      }
+    },
+    {
+      "path": "packages/van-slider/demo",
+      "style": {
+        "navigationBarTitleText": "Slider 滑块"
+      }
+    },
+    {
+      "path": "packages/van-stepper/demo",
+      "style": {
+        "navigationBarTitleText": "Stepper 步进器"
+      }
+    },
+    {
+      "path": "packages/van-switch/demo",
+      "style": {
+        "navigationBarTitleText": "Switch 开关"
+      }
+    },
+    {
+      "path": "packages/van-calendar/demo",
+      "style": {
+        "navigationBarTitleText": "Calendar 日历"
+      }
+    },
+    {
+      "path": "packages/van-cascader/demo",
+      "style": {
+        "navigationBarTitleText": "Cascader 级联选择"
+      }
+    },
+    {
+      "path": "packages/van-picker/demo",
+      "style": {
+        "navigationBarTitleText": "Picker 选择器"
+      }
+    },
+    {
+      "path": "packages/van-uploader/demo",
+      "style": {
+        "navigationBarTitleText": "Uploader 文件上传"
+      }
+    },
+    {
+      "path": "packages/van-circle/demo",
+      "style": {
+        "navigationBarTitleText": "Circle 进度条"
+      }
+    },
+    {
+      "path": "packages/van-grid/demo",
+      "style": {
+        "navigationBarTitleText": "Grid 宫格"
+      }
+    },
+    {
+      "path": "packages/van-count-down/demo",
+      "style": {
+        "navigationBarTitleText": "CountDown 倒计时"
+      }
+    },
+    {
+      "path": "packages/van-divider/demo",
+      "style": {
+        "navigationBarTitleText": "Divider 分割线"
+      }
+    },
+    {
+      "path": "packages/van-panel/demo",
+      "style": {
+        "navigationBarTitleText": "Panel 面板"
+      }
+    },
+    {
+      "path": "packages/van-progress/demo",
+      "style": {
+        "navigationBarTitleText": "Progress 进度条"
+      }
+    },
+    {
+      "path": "packages/van-loading/demo",
+      "style": {
+        "navigationBarTitleText": "Loading 加载"
+      }
+    },
+    {
+      "path": "packages/van-steps/demo",
+      "style": {
+        "navigationBarTitleText": "Steps 步骤条"
+      }
+    },
+    {
+      "path": "packages/van-tag/demo",
+      "style": {
+        "navigationBarTitleText": "Tag 标记"
+      }
+    },
+    {
+      "path": "packages/van-transition/demo",
+      "style": {
+        "navigationBarTitleText": "Transition 动画"
+      }
+    },
+    {
+      "path": "packages/van-overlay/demo",
+      "style": {
+        "navigationBarTitleText": "Overlay 遮罩层"
+      }
+    },
+    {
+      "path": "packages/van-popup/demo",
+      "style": {
+        "navigationBarTitleText": "Popup 弹出层"
+      }
+    },
+    {
+      "path": "packages/van-action-sheet/demo",
+      "style": {
+        "navigationBarTitleText": "ActionSheet 上拉菜单"
+      }
+    },
+    {
+      "path": "packages/van-dialog/demo",
+      "style": {
+        "navigationBarTitleText": "Dialog 弹出框"
+      }
+    },
+    {
+      "path": "packages/van-toast/demo",
+      "style": {
+        "navigationBarTitleText": "Toast 轻提示"
+      }
+    },
+    {
+      "path": "packages/van-checkbox/demo",
+      "style": {
+        "navigationBarTitleText": "Checkbox 复选框"
+      }
+    },
+    {
+      "path": "packages/van-sticky/demo",
+      "style": {
+        "navigationBarTitleText": "Sticky 粘性布局"
+      }
+    },
+    {
+      "path": "packages/van-tab/demo",
+      "style": {
+        "navigationBarTitleText": "Tab 标签页"
+      }
+    },
+    {
+      "path": "packages/van-datetime-picker/demo",
+      "style": {
+        "navigationBarTitleText": "DatetimePicker 时间选择"
+      }
+    },
+    {
+      "path": "packages/common/demo",
+      "style": {
+        "navigationBarTitleText": "Style"
+      }
+    },
+    {
+      "path": "packages/van-radio/demo",
+      "style": {
+        "navigationBarTitleText": "Radio 单选框"
+      }
+    },
+    {
+      "path": "packages/van-empty/demo",
+      "style": {
+        "navigationBarTitleText": "Empty 空状态"
+      }
+    },
+    {
+      "path": "packages/van-goods-action/demo",
+      "style": {
+        "navigationBarTitleText": "GoodsAction 商品导航"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "vant-weapp-convert-uniapp",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "mp-alipay": {
+      "titleBarColor": "#2ABB9C"
+    }
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "van-(.*)": "@/packages/van-$1/van-$1.vue"
+    }
+  }
+}
