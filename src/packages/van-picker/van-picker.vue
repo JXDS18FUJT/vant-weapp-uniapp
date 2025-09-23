@@ -287,7 +287,7 @@
             options
           }).then(() => {
             if (needReset) {
-              //column.setIndex(0);
+              column.setIndex(0);
             }
           });
         },

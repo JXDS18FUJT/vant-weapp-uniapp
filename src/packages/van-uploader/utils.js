@@ -65,12 +65,24 @@ function formatImage(
 function formatVideo(
   res
 ) {
-  return [{
-    ...pickExclude(res, ['tempFilePath', 'thumbTempFilePath', 'errMsg']),
-    type: 'video',
-    url: res.tempFilePath,
-    thumb: res.thumbTempFilePath,
-  }, ];
+  //小程序
+  if(res.tempFilePath){
+    return [{
+      ...pickExclude(res, ['tempFilePath', 'thumbTempFilePath', 'errMsg']),
+      type: 'video',
+      url: res.tempFilePath,
+      thumb: res.thumbTempFilePath,
+    }];
+  }else{
+    return res.tempFiles.map((item) => ({
+      ...pickExclude(item, ['path']),
+      type: 'video',
+      url: item.tempFilePath || item.path,
+      thumb: item.tempFilePath || item.path,
+    }))
+
+  }
+
 }
 
 function formatMedia(res) {
@@ -105,6 +117,60 @@ export function chooseFile({
 }) {
   return new Promise((resolve, reject) => {
     switch (accept) {
+      // #ifdef WEB || APP-PLUS
+      case 'image':
+
+        uni.chooseFile({
+          count: multiple ? Math.min(maxCount, 9) : 1,
+          mediaType: ['image'],
+          type:'image',
+          sourceType: capture,
+          maxDuration,
+          sizeType,
+          camera,
+          success: (res) => resolve(formatImage(res)),
+          fail: reject,
+        });
+
+        break;
+      case 'media':
+        uni.chooseFile({
+          count: multiple ? Math.min(maxCount, 9) : 1,
+          mediaType,
+          sourceType: capture,
+          maxDuration,
+          sizeType,
+          camera,
+          success: (res) => resolve(formatMedia(res)),
+          fail: reject,
+        });
+        break;
+      case 'video':
+        uni.chooseFile({
+          type:'video',
+          sourceType: capture,
+          compressed,
+          maxDuration,
+          camera,
+          success: (res) => resolve(formatVideo(res)),
+          fail: reject,
+        });
+        break;
+      default:
+        uni.chooseFile({
+          count: multiple ? maxCount : 1,
+          type: 'all',
+          ...(extension ? {
+            extension
+          } : {}),
+          success: (res) => resolve(formatImage(res)),
+          fail: reject,
+        });
+
+
+        break;
+        // #endif
+        // #ifdef MP
       case 'image':
         if (isPC || isWxWork) {
           uni.chooseImage({
@@ -159,15 +225,8 @@ export function chooseFile({
           success: (res) => resolve(formatFile(res)),
           fail: reject,
         });
-
-        // uni.chooseMessageFile({
-        //   count: multiple ? maxCount : 1,
-        //   type: accept,
-        //   ...(extension ? { extension } : {}),
-        //   success: (res) => resolve(formatFile(res)),
-        //   fail: reject,
-        // });
         break;
+        // #endif
     }
   });
 }

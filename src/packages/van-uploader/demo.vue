@@ -1,7 +1,7 @@
 <template>
   <view>
     <demo-block title="基础用法" padding>
-      <van-uploader   @delete="uploadDelete" name="2" @after-read="afterRead" showUpload :file-list="fileList2"></van-uploader>
+      <van-uploader accept="video"  @delete="uploadDelete" name="2" @after-read="afterRead" showUpload :file-list="fileList2"></van-uploader>
     </demo-block>
   </view>
 
