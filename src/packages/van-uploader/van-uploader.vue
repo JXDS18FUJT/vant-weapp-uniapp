@@ -10,7 +10,7 @@
           @click.stop="onPreviewImage" />
 
         <!-- 视频预览 -->
-        <video v-else-if="item.isVideo" class="van-uploader__preview-image" :src="item.url" :poster="item.thumb"
+        <video v-else-if="item.isVideo" :data-index="index" enable-danmu danmu-btn controls class="van-uploader__preview-image" :src="item.url" :poster="item.thumb"
           :title="item.name || ('视频' + index)" :autoplay="item.autoplay" style="sizeStyle(previewSize)"
           :object-fit="videoFit" :controls="false" :referrer-policy="referrerPolicy"
           @click.stop="onPreviewVideo"></video>
@@ -61,7 +61,7 @@
             <view style="display: flex;justify-content: center;align-items: center;height:100%">
               <image style="overflow: visible;height: 100%;" mode="heightFix" :src="item.url" v-if="item.isImage">
               </image>
-              <video :src="item.url" style="width:100vw;" v-if="item.isVideo"></video>
+              <video autoplay object-fit="contain" :src="item.url" style="width:100vw;height: 100%;" v-if="item.isVideo"></video>
             </view>
 
           </swiper-item>
@@ -380,6 +380,7 @@
             return sum;
           }, 0);
           this.previewMediaIndex = Number(index)
+
 
           //#ifdef H5 || APP-PLUS
           this.previewMediaShow = true
