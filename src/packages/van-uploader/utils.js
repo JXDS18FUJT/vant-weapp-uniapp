@@ -65,7 +65,7 @@ function formatImage(
 function formatVideo(
   res
 ) {
-  //小程序
+  //mp
   if(res.tempFilePath){
     return [{
       ...pickExclude(res, ['tempFilePath', 'thumbTempFilePath', 'errMsg']),
@@ -74,6 +74,7 @@ function formatVideo(
       thumb: res.thumbTempFilePath,
     }];
   }else{
+    //h5
     return res.tempFiles.map((item) => ({
       ...pickExclude(item, ['path']),
       type: 'video',
@@ -132,18 +133,6 @@ export function chooseFile({
           fail: reject,
         });
 
-        break;
-      case 'media':
-        uni.chooseFile({
-          count: multiple ? Math.min(maxCount, 9) : 1,
-          mediaType,
-          sourceType: capture,
-          maxDuration,
-          sizeType,
-          camera,
-          success: (res) => resolve(formatMedia(res)),
-          fail: reject,
-        });
         break;
       case 'video':
         uni.chooseFile({
