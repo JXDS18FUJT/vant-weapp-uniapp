@@ -49,6 +49,9 @@
           <van-icon :name="uploadIcon" class="van-uploader__upload-icon" />
           <text v-if="uploadText" class="van-uploader__upload-text">{{ uploadText }}</text>
         </view>
+        <van-popup :show="previewMediaShow">
+
+        </van-popup>
       </template>
     </div>
   </div>
@@ -147,7 +150,9 @@
       data() {
         return {
           lists: [],
+          previewList:[],
           isInCount: true,
+          previewMediaShow:false
         }
 
       },
@@ -299,7 +304,7 @@
             showmenu
           } = this;
           const item = lists[index];
-          console.log(lists.filter((item) => isImageFile(item)).map((item) => item.url))
+
           uni.previewImage({
             urls: lists.filter((item) => isImageFile(item)).map((item) => item.url),
             current: item.url,
