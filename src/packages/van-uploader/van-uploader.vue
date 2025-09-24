@@ -12,7 +12,8 @@
         <!-- 视频预览 -->
         <video v-else-if="item.isVideo" class="van-uploader__preview-image" :src="item.url" :poster="item.thumb"
           :title="item.name || ('视频' + index)" :autoplay="item.autoplay" style="sizeStyle(previewSize)"
-          :object-fit="videoFit" :controls="false" :referrer-policy="referrerPolicy" @click.stop="onPreviewVideo"></video>
+          :object-fit="videoFit" :controls="false" :referrer-policy="referrerPolicy"
+          @click.stop="onPreviewVideo"></video>
 
         <!-- 其他文件预览 -->
         <div v-else class="van-uploader__file" style="sizeStyle(previewSize)" @click.stop="onPreviewFile(index)">
@@ -52,16 +53,20 @@
 
       </template>
     </div>
-    <van-popup @close="()=>{previewMediaShow = false}" customStyle="background-color: transparent" :show="previewMediaShow">
-      <swiper style="width: 100vw;" :current="previewMediaIndex">
-        <swiper-item style="width: 100vw;" v-for="(item,index) in previewMediaList" :key="index">
-          <view style="display: flex;justify-content: center;align-items: center;">
-            <image style="width: 100vw;overflow: visible;" mode="widthFix" :src="item.url" v-if="item.isImage"></image>
-            <video :src="item.url" style="width:100vw;" v-if="item.isVideo"></video>
-          </view>
+    <van-popup @close="()=>{previewMediaShow = false}" customStyle="background-color: transparent"
+      :show="previewMediaShow">
+      <view style="height: 50vh;display: flex;align-items: center;">
+        <swiper style="width: 100vw;height:100%" :current="previewMediaIndex">
+          <swiper-item style="width: 100vw;height:100%" v-for="(item,index) in previewMediaList" :key="index">
+            <view style="display: flex;justify-content: center;align-items: center;height:100%">
+              <image style="overflow: visible;height: 100%;" mode="heightFix" :src="item.url" v-if="item.isImage">
+              </image>
+              <video :src="item.url" style="width:100vw;" v-if="item.isVideo"></video>
+            </view>
 
-        </swiper-item>
-      </swiper>
+          </swiper-item>
+        </swiper>
+      </view>
     </van-popup>
   </div>
 </template>
@@ -326,7 +331,7 @@
             showmenu
           } = this;
           const item = lists[index];
-          this.previewMediaIndex =Number(index)
+          this.previewMediaIndex = Number(index)
           //#ifdef H5 || APP-PLUS
           this.previewMediaShow = true
           //#endif
