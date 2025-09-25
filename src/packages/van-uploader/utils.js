@@ -54,9 +54,11 @@ export function isVideoFile(item) {
 function formatImage(
   res
 ) {
+
   return res.tempFiles.map((item) => ({
     ...pickExclude(item, ['path']),
     type: 'image',
+    file:item,
     url: item.tempFilePath || item.path,
     thumb: item.tempFilePath || item.path,
   }));
@@ -65,6 +67,7 @@ function formatImage(
 function formatVideo(
   res
 ) {
+   console.log('formatVideo',res)
   //mp
   if(res.tempFilePath){
     return [{
@@ -76,7 +79,7 @@ function formatVideo(
   }else{
     //h5
     return res.tempFiles.map((item) => ({
-      ...pickExclude(item, ['path']),
+      file:item,
       type: 'video',
       url: item.tempFilePath || item.path,
       thumb: item.tempFilePath || item.path,

@@ -2,8 +2,8 @@
   <div class="van-uploader">
     <div class="van-uploader__wrapper">
       <!-- 预览样式 -->
-      <div v-if="previewImage" v-for="(item, index) in lists" :key="index" class="van-uploader__preview"
-        @click="onClickPreview(index)">
+      <div v-if="previewImage" v-for="(item, index) in lists" :key="index" :data-index="index" class="van-uploader__preview"
+        @click="onClickPreview">
         <!-- 图片预览 -->
         <img v-if="item.isImage" class="van-uploader__preview-image" :src="item.thumb || item.url"
           :alt="item.name || ('图片' + index)" style="sizeStyle(previewSize)" :data-index="index" :mode="imageFit"
@@ -12,7 +12,7 @@
         <!-- 视频预览 -->
         <video v-else-if="item.isVideo" :data-index="index" enable-danmu danmu-btn controls class="van-uploader__preview-image" :src="item.url" :poster="item.thumb"
           :title="item.name || ('视频' + index)" :autoplay="item.autoplay" style="sizeStyle(previewSize)"
-          :object-fit="videoFit" :controls="false" :referrer-policy="referrerPolicy"
+          :object-fit="videoFit"  :referrer-policy="referrerPolicy"
           @click.stop="onPreviewVideo"></video>
 
         <!-- 其他文件预览 -->
@@ -116,7 +116,7 @@
         },
         fileList: {
           type: Array,
-          default: [],
+          default: ()=>[],
           observer: 'formatFileList',
         },
         maxSize: {
@@ -234,11 +234,11 @@
               accept
             })
             .then((res) => {
-              console.log(res)
+
               this.onBeforeRead(multiple ? res : res[0]);
             })
             .catch((error) => {
-              console.log(error)
+
               this.$emit('error', error);
             });
         },
@@ -257,7 +257,7 @@
           if (useBeforeRead) {
             res = new Promise((resolve, reject) => {
               this.$emit('before-read', {
-                file,
+                ...file,
                 ...this.getDetail(),
                 callback: (ok) => {
                   ok ? resolve() : reject();
@@ -290,7 +290,7 @@
 
           if (oversize) {
             this.$emit('oversize', {
-              file,
+              ...file,
               ...this.getDetail()
             });
             return;
@@ -302,21 +302,21 @@
           }
           console.log(file, this.getDetail())
           this.$emit('after-read', {
-            file,
+            ...file,
             ...this.getDetail()
           });
           console.log(afterRead)
         },
 
         deleteItem(event) {
-          console.log(event)
+
           const {
             index
           } = event.currentTarget.dataset;
 
           this.$emit('delete', {
             ...this.getDetail(index),
-            file: this.fileList[index],
+            ...this.fileList[index],
           });
         },
 
