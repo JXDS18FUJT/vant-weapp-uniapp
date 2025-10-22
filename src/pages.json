@@ -182,6 +182,12 @@
       }
     },
     {
+      "path": "packages/van-notify/demo",
+      "style": {
+        "navigationBarTitleText": "Notify 消息提示"
+      }
+    },
+    {
       "path": "packages/van-checkbox/demo",
       "style": {
         "navigationBarTitleText": "Checkbox 复选框"

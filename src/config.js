@@ -137,7 +137,8 @@ export default [{
       },
       {
         path: '/notify',
-        title: 'Notify 消息通知'
+        title: 'Notify 消息通知',
+        status: 'finish'
       },
       {
         path: '/overlay',
