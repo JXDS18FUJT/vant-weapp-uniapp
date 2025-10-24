@@ -1,13 +1,13 @@
 <template>
-  <view>
-    <van-transition name="slide-down" :show="notifyShow" custom-class="van-notify__container"
-      custom-style="computed.rootStyle({ zIndex, top })" @click="onTap">
-      <view :class="'van-notify van-notify--'+type" style="computed.notifyStyle({ background, color })">
-        <view v-if="safeAreaInsetTop" :style="'height:'+statusBarHeight+'px'" />
-        <text>{{ message }}</text>
-      </view>
-    </van-transition>
-  </view>
+
+  <van-transition name="slide-down" :show="notifyShow" class="van-notify__container" :custom-style="rootStyle"
+    @click="onTap">
+    <view :class="'van-notify van-notify--'+notifyType" :style="notifyStyle">
+      <view v-if="safeAreaInsetTop" :style="'height:'+statusBarHeight+'px'" />
+      <text>{{ message }}</text>
+    </view>
+  </van-transition>
+
 </template>
 
 <script>
@@ -21,29 +21,35 @@
 
   export default VantComponent({
     props: {
-      message: String,
+      message: {
+        type: String,
+        default: '',
+      },
       background: String,
       type: {
         type: String,
-        value: 'danger',
+        default: 'danger',
       },
       color: {
         type: String,
-        value: WHITE,
+        default: WHITE,
       },
       duration: {
         type: Number,
-        value: 3000,
+        default: 3000,
       },
       zIndex: {
         type: Number,
-        value: 110,
+        default: 110,
       },
       safeAreaInsetTop: {
         type: Boolean,
-        value: false,
+        default: false,
       },
-      top: null,
+      top: {
+        type: Number,
+        default: 0,
+      },
     },
 
     data: () => {
@@ -62,6 +68,20 @@
       } = uni.getSystemInfoSync();
       this.statusBarHeight = statusBarHeight
     },
+    computed: {
+      notifyType() {
+        return this.type + ''
+      },
+      notifyMessage() {
+        return this.message + ''
+      },
+      rootStyle() {
+        return 'z-index:' + this.zIndex + ';top:' + this.top + 'px;'
+      },
+      notifyStyle() {
+        return 'background:' + this.background + ';color:' + this.color + ';'
+      }
+    },
 
     methods: {
       show() {
@@ -73,7 +93,9 @@
         clearTimeout(this.timer);
         this.notifyShow = true
 
-        wx.nextTick(onOpened);
+        setTimeout(() => {
+          onOpened()
+        }, 1000 / 30);
 
         if (duration > 0 && duration !== Infinity) {
           this.timer = setTimeout(() => {
@@ -85,10 +107,10 @@
       hide() {
         const {
           onClose
-        } = this.data;
+        } = this;
 
         clearTimeout(this.timer);
-        this.show = false;
+        this.notifyShow = false;
         setTimeout(() => {
           onClose()
         }, 1000 / 30);
@@ -98,15 +120,14 @@
       onTap(event) {
         const {
           onClick
-        } = this.data;
+        } = this;
         if (onClick) {
-          onClick(event.detail);
+          onClick(event);
         }
       },
     },
   });
 </script>
-
-<style scoped>
+<style lang="less">
   @import './index.less';
 </style>

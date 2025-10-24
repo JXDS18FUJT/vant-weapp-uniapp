@@ -19,7 +19,7 @@ import {
 // }
 
 const defaultOptions = {
-  selector: '#van-notify',
+  selector: 'van-notify',
   type: 'danger',
   message: '',
   background: '',
@@ -61,14 +61,21 @@ export default function Notify(options) {
   };
 
   const context = options.context || getContext();
-  const notify = context.selectComponent(options.selector);
+  const notify = context.$refs[options.selector];
 
   delete options.context;
   delete options.selector;
 
   if (notify) {
-    console.log(notify)
-    notify.setData(options);
+    console.log(notify,options)
+    //notify.setData(options);
+    notify.type = options.type
+    notify.message = options.message||''
+    notify.zIndex = options.zIndex||110
+    notify.color= options.color||'#fff'
+    notify.duration= options.duration||3000
+    notify.background = options.background||''
+    notify.safeAreaInsetTop = options.safeAreaInsetTop||false
     notify.show();
     return notify;
   }
