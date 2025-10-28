@@ -2,7 +2,8 @@
   "name": "docs",
   "private": true,
   "scripts": {
-    "preview": "node build/preview.js"
+    "preview": "node build/preview.js",
+    "build": "npx cross-env NODE_ENV=production webpack --config build/webpack.doc.prd.js"
   },
   "devDependencies": {
     "@babel/core": "^7.2.5",
