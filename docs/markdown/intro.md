@@ -16,7 +16,7 @@
 
 <div>
   <div style="display: inline-block; text-align: center">
-    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://gitee.com/auven/vant-weapp-convert-uniapp/raw/master/docs/images/h5.png">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="http://114.132.48.179:4455/images/uniVant/h5.png">
     <p>H5</p>
   </div>
   <div style="display: inline-block; text-align: center">
