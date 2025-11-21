@@ -4,7 +4,7 @@
       <image
         mode="aspectFit"
         class="demo-home__image"
-        src="https://images.weserv.nl/?url=https://gitee.com/auven/vant-weapp-convert-uniapp/raw/master/src/static/logo.png"
+        src="http://114.132.48.179:4455/images/uniVant/logo.png"
       />
       <view class="demo-home__text">Vant + Uniapp</view>
     </view>
